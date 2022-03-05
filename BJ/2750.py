@@ -1,3 +1,4 @@
+import sys
 def heapify(unsorted,index,heap_size):
     largest = index
     left_index= 2 * index+1
@@ -15,20 +16,18 @@ def heapify(unsorted,index,heap_size):
 
 def heap_sort(unsorted):
     n = len(unsorted)
-    # Max_Heap 을 구성하는 단계.
-    # 인덱스 : (n을 2로 나눈 몫-1)~0
-    # 최초로 힙 구성시 배열의 중간부터 시작하면 이진트리의 성질에 의해
-    # 모든 요소의 값을 한번씩 비교할 수 있다.
     for i in range(n //2 - 1, -1, -1):
         heapify(unsorted,i,n)
-    #만들어진 Heap 을 정렬하는 단계
-    #최악의 경우 트리의 높이(logn)만큼의 자리 이동을 하는데,
-    #노드가 n개 존재함으로 O(nlogn)만큼의 시간이 든다.
     for i in range(n -1, 0, -1):
-        unsorted[0], unsorted[i] = unsorted[i], unsorted[0] #가장 큰 노드가 0에 위치함으로, 하나씩 바꿔주는 과정
+        unsorted[0], unsorted[i] = unsorted[i], unsorted[0]
         heapify(unsorted,0,i)
 
     return unsorted
-
-
-
+unsorted=[]
+N = int(sys.stdin.readline())
+for i in range(N):
+    a = int(sys.stdin.readline())
+    unsorted.append(a)
+unsorted = heap_sort(unsorted)
+for i in unsorted:
+    print(i)
