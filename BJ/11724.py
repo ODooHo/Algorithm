@@ -25,4 +25,5 @@ for j in range(1,N+1): #1~ 연결되지 않은 노드들도 파악하기 위해 
     if not visited[j]:
         dfs(graph,j,visited)
         count +=1 #연결 요소 = 그래프를 이루고있는 요소들의 숫자
+                  # 그래프 간의 분리된 노드를 의미?
 print(count)
