@@ -1,48 +1,51 @@
 import sys
 from collections import deque
-
-
-def bfs(c,a,b):
-    global result
-    global graph
-    global visited
+DRIVER = 5
+P = 6
+D = 7
+#a,b 승객 c,d 목적지
+def bfs(n,m,a,b,c,d):
+    visited = [[False]*(N+1) for _ in range(N+1)]
     queue = deque()
-    queue.append((c,a,b))
-    result[c][a][b] = 0
+    queue.append((n,m))
+    visited[n][m] = True
     while queue:
-        c,a,b = queue.popleft() #왼쪽부터 뽑음 (왼쪽이 가장 먼저 들어간 정보)
-        for i in range(6):
-            x , y, z = a+dx[i],b+dy[i],c + dz[i]
-            if 0 <= x < R and 0 <= y < C and 0 <= z < L:
-                if graph[z][x][y] == "E":
-                    print(f"Escaped in {result[c][a][b]+1} minute(s).")
-                    return
-                if not visited[z][x][y] and graph[z][x][y] == ".":
-                    result[z][x][y] = result[c][a][b]+1
-                    visited[z][x][y] = True
-                    queue.append((z,x,y))
-    print("Trapped!")
-
-while(1):
-    L,R,C = map(int,sys.stdin.readline().split())
-    if L+R+C ==0:
-        break
-
-    dx = [0,1,0,-1,0,0]
-    dy = [1,0,-1,0,0,0]
-    dz = [0,0,0,0,1,-1]
-
-    result = [[[0]*C for _ in range(R)]for _ in range(L)]
-    graph = [[[]for _ in range(R)]for _ in range(L)]
-    visited = [[[False]*C for _ in range(R)]for _ in range(L)]
+        x,y = queue.popleft()
 
 
-    for i in range(L):
-        graph[i] = [list(map(str,sys.stdin.readline().rstrip()))for _ in range(R)]
-        sys.stdin.readline()
 
-    for z in range(L):
-        for x in range(R):
-            for y in range(C):
-                if graph[z][x][y] == "S":
-                    bfs(z,x,y)
+    
+
+
+
+
+
+dx=[0,1,0,-1]
+dy=[1,0,-1,0]
+N,M,fuel = map(int,sys.stdin.readline().split())
+DEST = [[] for _ in range(N+1)] #목적지 배열로 접근
+PASS = [[] for _ in range(N+1)] #승객 위치 배열로 접근
+
+DD = []  #목적지 좌표/순서대로 넣어보기
+PP = []  #승객 좌표/순서대로 넣어보기
+
+graph = [list(map(int,sys.stdin.readline().split()))for _ in range(N)]
+n,m = map(int,sys.stdin.readline().split())
+graph[n][m] = DRIVER
+for i in range(M):
+    q,w,e,r = map(int,sys.stdin.readline().split())
+    graph[q-1][w-1] = P
+    graph[e-1][r-1] = D
+    PP.append((q,w))
+    DD.append((e,r))
+
+print(graph)
+print(PP,DD)
+
+# for j in range(M):
+#     a,b =PP[j]
+#     c,d =DD[j]
+#     bfs(n,m,a,b,c,d)
+#     n,m = c,d
+#
+
