@@ -13,13 +13,10 @@ while queue:
     if node == k:
         print(dist)
         break
-
-    # 순간이동을 먼저 처리해야 한다.
-    # 그래야 1 2 와 같은 입력에 0을 출력할 수 있다.
     next = node * 2
     if next < len(visited) and not visited[next]:
         visited[next] = True
-        heapq.heappush(queue, (dist, next))
+        heapq.heappush(queue, (dist + 1, next))
 
     for i in (node + 1, node - 1):
         if i >= 0 and i < len(visited) and not visited[i]:
