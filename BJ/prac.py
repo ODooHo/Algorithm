@@ -1,9 +1,10 @@
-import sys
+graph = [
+    [1,2,3,4],
+    [5,6,7,8],
+    [1],
+    [2],
+    [3]
+]
 
-
-input = sys.stdin.readline
-
-
-
-map.append(list(map(int,input().split())))
-print(map)
+graph = sorted(graph,key=len,reverse=True)
+print(graph)
