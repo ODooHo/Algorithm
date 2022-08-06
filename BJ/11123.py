@@ -22,9 +22,8 @@ T = int(input())
 
 for _ in range(T):
     H,W = map(int, input().split())
-    graph = (list(input()) for _ in range(H))
+    graph = [list(input().rstrip()) for _ in range(H)]
     visited = [[False] * W for _ in range(H)]
-    print(graph)
     num = 0
     dx = [0, 1, 0, -1]
     dy = [1, 0, -1, 0]
