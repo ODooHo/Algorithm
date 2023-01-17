@@ -1,6 +1,14 @@
-print("본 프로그램은 섭씨온도를 화씨온도로 변환하는 프로그램입니다.")
-print("변환하고 싶은 섭씨온도를 입력하세요.")
-a = input()
-b = (float(a) * 1.8) + 32
-print("섭씨온도: ",a)
-print("화씨온도: ",b)
+a = list(map(int, input().split()))
+j = 0
+if len(a) == 1:
+    print("Good")
+    exit()
+else:
+    while j != len(a) - 1:
+        if a[j] <= a[j + 1]:
+            j += 1
+        else:
+            print("Bad")
+            exit()
+
+    print("Good")
