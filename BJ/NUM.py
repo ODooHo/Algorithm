@@ -4,13 +4,9 @@ import random
 answer_list = []
 
 def make_random_number():
-    for i in range(3):
-        a = random.randint(1,9)
-        answer_list.append(a)
-
-    print(answer_list)
-
-    return(answer_list[0],answer_list[1],answer_list[2])
+    num_list = [0,1,2,3,4,5,6,7,8,9]
+    random.shuffle(num_list)
+    return(num_list.pop(),num_list.pop(),num_list.pop())
 
 
 
@@ -28,19 +24,22 @@ def check_strike_ball(secret_number,answer_number):
         ball=0
     return [strike,ball]
 
-make_random_number()
-
-
+answer_list = list(make_random_number())
+print(answer_list)
+cnt = 1
 while(1):
-    num = int(input("Your answer is..."))
-    secret = [0,0,0]
-    for i in range(2,-1,-1):
-        secret[i] = num%10
-        num = num//10
+    num = int(input())
+    secret = [0, 0, 0]
+    for i in range(2, -1, -1):
+        secret[i] = num % 10
+        num = num // 10
+    print(f"your answer is...[{secret[0]}, {secret[1]}, {secret[2]}]")
     a,b = check_strike_ball(secret,answer_list)
     print(a,"strike and",b,"ball")
-    if(secret ==answer_list):
+    if (secret == answer_list):
         break
+    cnt+=1
 
+print("The number of trials is %d." %cnt)
 print("The answer is [%d, %d, %d]." %(answer_list[0],answer_list[1],answer_list[2]))
 
