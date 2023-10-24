@@ -7,6 +7,7 @@ n,a,b = map(int,input().split())
 
 
 
+
 cnt = 0
 
 while(a!=b):
