@@ -1,6 +1,7 @@
 A = input().lower()
 word_list = list(set(A))
 
+
 answer = []
 
 for i in word_list:
