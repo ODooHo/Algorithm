@@ -1,17 +1,14 @@
-<<<<<<< HEAD
-=======
-a = list(map(int, input().split()))
-j = 0
-if len(a) == 1:
-    print("Good")
-    exit()
-else:
-    while j != len(a) - 1:
-        if a[j] <= a[j + 1]:
-            j += 1
-        else:
-            print("Bad")
-            exit()
+import sys
 
-    print("Good")
->>>>>>> 1968b9d4a2b0cf8eb4d988c1406a5f54babaa531
+input = sys.stdin.readline
+
+V,E = map(int,input().split())
+
+graph = [[] for _ in range(V+1)]
+
+
+for i in range(E):
+    a,b = map(int,input().split())
+    graph[a].append(b)
+
+print(graph)
