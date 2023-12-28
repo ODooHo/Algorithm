@@ -1,11 +1,11 @@
-package code;
+package code.theory;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class BubbleSort {
+public class SelectionSort {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
@@ -15,26 +15,25 @@ public class BubbleSort {
             list[i] = Integer.parseInt(st.nextToken());
         }
 
-        int temp = 0;
         int idx = 0;
-        for(int i = 1; i<10; i++){
-            for (int j=0; j<10-i; j++){
 
-                if(list[j] > list[j+1]){
-                    temp = list[j];
-                    list[j] = list[j+1];
-                    list[j+1] = temp;
+        for(int i=0; i<10; i++){
+            int min = list[i];
+            for(int j=i+1; j<10; j++){
+                if(list[j] < min){
+                    min = list[j];
+                    idx = j;
                 }
             }
+            if(i != 9){
+                list[idx] = list[i];
+                list[i] = min;
+            }
+
         }
 
         for(int i=0; i<10; i++){
-            System.out.println(list[i]);
+            System.out.print(list[i]);
         }
-
-
-
-
-
     }
 }
