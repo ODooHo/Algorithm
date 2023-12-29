@@ -8,7 +8,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class Search {
+public class 그래프_완전탐색 {
     static boolean visited[];
     static ArrayList<Integer>[] A;
     public static void main(String[] args) throws IOException {

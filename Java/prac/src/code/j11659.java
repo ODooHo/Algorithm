@@ -13,6 +13,7 @@ public class j11659 {
 //        int N = Integer.parseInt(stringTokenizer.nextToken());
 //        int M = Integer.parseInt(stringTokenizer.nextToken());
 
+        System.out.println(-1%2);
 
         Scanner sc = new Scanner(System.in);
         int N,M = 0;
