@@ -3,42 +3,25 @@ package code;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Queue;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class j20006 {
-    static Queue<ArrayList<User>> Game;
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        int p = Integer.parseInt(st.nextToken());
-        int m = Integer.parseInt(st.nextToken());
-        int[] standards = new int[301];
-        int count;
-        for(int i=0;i<301; i++){
-            standards[i] = -1;
-        }
 
-        for(int x=0;x<p;x++){
-            st = new StringTokenizer(br.readLine());
-            int level = Integer.parseInt(st.nextToken());
-            String name = st.nextToken();
-            User user = new User(level,name);
-            if(x == 0){
-                count = x;
-                standards[x] = level;
-                ArrayList<User> room = new ArrayList<>();
-                room.add(user);
-            }
-            if(level>standa)
+    static class Room{
+        public int standard;
+        public List<User> users;
+
+        public Room(int standard, User user) {
+            this.standard = standard;
+            this.users.add(user);
         }
 
     }
 
-    static class User {
-        private int level;
-        private String name;
+
+    static class User implements Comparable<User>{
+        public int level;
+        public String name;
 
         public User(int level, String name) {
             this.level = level;
@@ -53,7 +36,67 @@ public class j20006 {
             return name;
         }
 
+        @Override
+        public int compareTo(User o)
+        {
+            return this.name.compareTo(o.name);
+        }
     }
+    static List<Room> wait;
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int p = Integer.parseInt(st.nextToken());
+        int m = Integer.parseInt(st.nextToken());
+        for(int x=0;x<p;x++){
+            st = new StringTokenizer(br.readLine());
+            int level = Integer.parseInt(st.nextToken());
+            String name = st.nextToken();
+            User user = new User(level,name);
+            boolean flag = false;
+
+            for(int i=0;i<wait.size();i++){
+                Room temp = wait.get(i);
+
+                int check = Math.abs(temp.standard - user.level);
+
+                if(temp.users.size()>=m){
+                    continue;
+                }
+
+                if(check <= 10){
+                    temp.users.add(user);
+                    flag = true;
+                    break;
+                }
+
+            }
+
+            if(flag == false){
+                Room room = new Room(level,user);
+                wait.add(room);
+            }
+
+
+        }
+
+        for(int i=0;i<wait.size();i++){
+            Room result = wait.get(i);
+            if(result.users.size() >=m){
+                System.out.println("Started!");
+            }else{
+                System.out.println("Waiting!");
+            }
+            Collections.sort(result.users);
+
+            for(int j=0;j<result.users.size();j++){
+                User user = result.users.get(j);
+                System.out.println(user.level + " " + user.name);
+            }
+        }
+
+    }
+
 }
 
 
