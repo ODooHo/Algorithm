@@ -3,10 +3,7 @@ package code;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class j2583 {
     static boolean visited[][];
@@ -54,15 +51,15 @@ public class j2583 {
 
         for(int i=1;i<=n;i++){
             for(int j=1;j<=m;j++){
-                if(area[i][j] == 0){
+                if(area[i][j] == 0 && !visited[i][j]){
                     int temp = BFS(i,j);
                     result.add(temp);
                 }
             }
 
         }
-
         System.out.println(result.size());
+        Collections.sort(result);
         for (Integer answer : result) {
             System.out.print(answer + " ");
         }
@@ -75,12 +72,10 @@ public class j2583 {
         int width = 1;
         while(!queue.isEmpty()){
             int[] current = queue.poll();
-
             for(int k=0;k<4;k++){
                 int x = current[0] + dx[k];
                 int y = current[1] + dy[k];
-
-                if(!visited[x][y] && x>=0 && y>=0 && x<n && y<m){
+                if(x>0 && y>0 && x<=n && y<=m && !visited[x][y]){
                     if(area[x][y] != 1){
                         visited[x][y] = true;
                         queue.add(new int[]{x,y});
