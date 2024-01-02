@@ -1,27 +1,23 @@
-package code.theory;
+package code;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.PriorityQueue;
-import java.util.StringTokenizer;
+import java.util.*;
 
-public class 최단거리 {
+public class practice {
 
     static class Node{
-        int v;
-        int cost;
+        int v; //엣지
+        int cost; //비용
 
         public Node(int v, int cost) {
             this.v = v;
             this.cost = cost;
         }
-
     }
-    static ArrayList<Node>[] D;
     static boolean[] visited;
-
+    static ArrayList<Node>[] D;
     static int[] result;
 
     public static void main(String[] args) throws IOException {
@@ -72,26 +68,23 @@ public class 최단거리 {
 
     }
 
-    private static void Dijkstra(int start) {
-        PriorityQueue<Node> queue = new PriorityQueue<>(((o1, o2) -> o1.cost - o2.cost));
-        //시작 노드 초기화
+    private static void Dijkstra(int start){
+        PriorityQueue<Node> queue = new PriorityQueue<>(Comparator.comparingInt(o-> o.cost));
+
         queue.add(new Node(start,0));
         result[start] = 0;
-
         while(!queue.isEmpty()){
-            //현재 최단 거리가 가장 짧은 노드를 꺼내서 방문처리
             Node current = queue.poll();
 
             if(!visited[current.v]){
                 visited[current.v] = true;
             }
 
-            for (Node node : D[current.v]) {
-                //방문하지 않았고, 현재 노드를 거쳐서 다른 노드로 가는 거리가 더 짧을 경우
-                if(!visited[node.v] && result[node.v] > current.cost + node.cost){
-                    result[node.v] = current.cost + node.cost;
-                    queue.add(new Node(node.v,result[node.v]));
-                }
+            for (Node next: D[current.v]) {
+                if(!visited[next.v] && result[next.v] > current.cost + next.cost){
+                    result[next.v] = current.cost + next.cost;
+                    queue.add(new Node(next.v,result[next.v]));
+                 }
             }
         }
     }
