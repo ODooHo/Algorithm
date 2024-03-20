@@ -21,8 +21,14 @@ public class j2596 {
         int len = sc.nextInt();
         List<Character[]> result = new ArrayList<>();
 
-        while(true){
+        String next = sc.next();
+        char[] charArray = next.toCharArray();
 
+        char[] temp = new char[6];
+        for(int i=1;i<len+1;i++){
+            for(int j=0;j<6;j++){
+
+            }
         }
 
 
