@@ -10,7 +10,7 @@ public class SelectionSort {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
 
-        int list[] = new int[10];
+        int[] list = new int[10];
         for(int i = 0; i < 10; i++){
             list[i] = Integer.parseInt(st.nextToken());
         }

@@ -30,7 +30,7 @@ public class j1707 {
             isEven = true;
 
             for(int i=1;i<=v; i++){
-                A[i] = new ArrayList<Integer>();
+                A[i] = new ArrayList<>();
             }
 
             for(int i=0;i<e;i++){
