@@ -16,3 +16,10 @@
         bw.flush();
         bw.close();
         br.close();
+
+
+리스트 슬라이싱 하는 방법  size = 자르려는 길이
+        정방향
+        String check = temp.substring(i,Math.min(temp.length(),i+size);
+        역방향
+        String check = temp.substring(Math.max(0,i - size),i);
