@@ -31,7 +31,7 @@ public class j7785 {
         people.sort(Collections.reverseOrder());
 
         for (String person : people) {
-            bw.append(person + "\n");
+            bw.append(person).append("\n");
         }
 
         bw.flush();
