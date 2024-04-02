@@ -33,9 +33,12 @@ public class j14891 {
             gearOperation(idx-1,direction);
         }
 
-        for (LinkedList<Character> characters : total) {
-            System.out.println(characters.get(0));
-        }
+//        for (LinkedList<Character> characters : total) {
+//            for (Character character : characters) {
+//                System.out.print(character);
+//            }
+//            System.out.println();
+//        }
 
         calculate();
 
@@ -70,7 +73,7 @@ public class j14891 {
         }
         LinkedList<Character> current = total.get(i);
         LinkedList<Character> next = total.get(i-1);
-        if(current.get(2) == next.get(6)){
+        if(current.get(6) == next.get(2)){
             return;
         }
         right(i+1,-direction);
@@ -126,7 +129,20 @@ public class j14891 {
                     break;
             }
 
-            System.out.println(point);
         }
     }
 }
+
+
+/**
+ * 11010111
+ * 01111101
+ * 10011101
+ * 00000001
+ *
+ *
+ * 11010111
+ * 11111010
+ * 11001110
+ * 00000001
+ */
