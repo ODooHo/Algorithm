@@ -37,10 +37,10 @@ public class j15591 {
 
         for(int t=0; t<Q;t++) {
             st = new StringTokenizer(br.readLine());
-            int i = Integer.parseInt(st.nextToken());
             int k = Integer.parseInt(st.nextToken());
+            int v = Integer.parseInt(st.nextToken());
 
-            int result = bfs(i, k, 0);
+            int result = bfs(k, v);
             bw.append(result + "\n");
         }
 
@@ -48,11 +48,12 @@ public class j15591 {
         bw.close();
     }
 
-    static int bfs(int i, int k,int cnt){
+    static int bfs(int k, int v){
+        int cnt = 0;
         Queue<Integer> queue = new LinkedList<>();
-        queue.add(i);
+        queue.add(v);
         boolean[] visited = new boolean[N+1];
-        visited[i] = true;
+        visited[v] = true;
 
         while(!queue.isEmpty()){
             Integer current = queue.poll();
