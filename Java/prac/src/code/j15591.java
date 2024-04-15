@@ -56,7 +56,7 @@ public class j15591 {
         visited[v] = true;
 
         while(!queue.isEmpty()){
-            Integer current = queue.poll(); 
+            Integer current = queue.poll();
             ArrayList<Node> nodes = video[current];
             for (Node node : nodes) {
                 if(!visited[node.idx] && node.value>=k){
