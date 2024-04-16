@@ -18,6 +18,11 @@ public class j1182 {
         S = Integer.parseInt(st.nextToken());
         num = new int[N];
 
+        st = new StringTokenizer(br.readLine());
+        for(int i=0; i<N;i++){
+            num[i] = Integer.parseInt(st.nextToken());
+        }
+
         dfs(0,0);
         if(S == 0){
             System.out.println(cnt-1);
@@ -32,6 +37,7 @@ public class j1182 {
                 cnt++;
             }
             return;
+
         }
 
         dfs(depth+1,sum + num[depth]);
