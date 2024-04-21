@@ -10,6 +10,7 @@ public class j15903 {
     static long N;
     static long M;
     static PriorityQueue<Long> queue = new PriorityQueue<>();
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
@@ -18,23 +19,23 @@ public class j15903 {
         M = Integer.parseInt(st.nextToken());
 
         st = new StringTokenizer(br.readLine());
-        for(int i=0; i<N;i++){
+        for (int i = 0; i < N; i++) {
             queue.add(Long.valueOf(st.nextToken()));
         }
 
         long cnt = 0;
         int idx = 0;
-        for(int i=0;i<M;i++){
+        for (int i = 0; i < M; i++) {
             long[] temp = new long[1001];
             long a = queue.poll();
             long b = queue.poll();
-            long sum = a+b;
+            long sum = a + b;
             queue.add(sum);
             queue.add(sum);
         }
 
         for (Long i : queue) {
-            cnt+=i;
+            cnt += i;
         }
 
         System.out.println(cnt);
