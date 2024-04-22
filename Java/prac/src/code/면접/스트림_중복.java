@@ -18,7 +18,7 @@ public class 스트림_중복 {
 
         for (char c : temp) {
             boolean check = set.add(c);
-            if(!check){
+            if (!check) {
                 result.add(c);
             }
         }

@@ -14,66 +14,62 @@ public class 유효한_괄호 {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        while(true){
+        while (true) {
             Stack<Character> stack = new Stack<>();
             String line = br.readLine();
-            if(line.equals("exit")){
+            if (line.equals("exit")) {
                 break;
             }
             boolean flag = true;
 
             for (char c : line.toCharArray()) {
-                if(c == '(' || c == '{' || c == '['){
+                if (c == '(' || c == '{' || c == '[') {
                     stack.push(c);
                 }
-                if(c == ')'){
-                    if(stack.isEmpty()){
+                if (c == ')') {
+                    if (stack.isEmpty()) {
                         flag = false;
                         break;
-                    }
-                    else{
+                    } else {
                         Character pop = stack.pop();
-                        if(pop != '('){
+                        if (pop != '(') {
                             flag = false;
                         }
                     }
                 }
-                if(c == '}'){
-                    if(stack.isEmpty()){
+                if (c == '}') {
+                    if (stack.isEmpty()) {
                         flag = false;
                         break;
-                    }
-                    else{
+                    } else {
                         Character pop = stack.pop();
-                        if(pop != '{'){
+                        if (pop != '{') {
                             flag = false;
                         }
                     }
                 }
-                if(c == ']'){
-                    if(stack.isEmpty()){
+                if (c == ']') {
+                    if (stack.isEmpty()) {
                         flag = false;
                         break;
-                    }
-                    else{
+                    } else {
                         Character pop = stack.pop();
-                        if(pop != '['){
+                        if (pop != '[') {
                             flag = false;
                         }
                     }
                 }
             }
-            if(!stack.isEmpty()){
+            if (!stack.isEmpty()) {
                 flag = false;
             }
 
-            if(flag){
+            if (flag) {
                 System.out.println("Correct!");
-            }else{
+            } else {
                 System.out.println("Incorrect!");
             }
         }
-
 
 
     }

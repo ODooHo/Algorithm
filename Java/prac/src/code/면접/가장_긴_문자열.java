@@ -8,6 +8,7 @@ public class 가장_긴_문자열 {
                 Arrays.asList("ASFAS", "asfqwtdg", "ewidjjdbiusdjbius", "aujfwruas")
         );
 
+        
         int max = 0;
         String result = "";
         for (String s : temp) {
@@ -16,6 +17,7 @@ public class 가장_긴_문자열 {
                 max = current;
                 result = s;
             }
+
         }
 
         String result2 = temp.stream()
