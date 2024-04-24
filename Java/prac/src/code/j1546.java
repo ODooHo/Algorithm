@@ -11,14 +11,14 @@ public class j1546 {
         int[] temp = new int[N];
         float result = 0;
 
-        for(int i = 0; i < N; i++){
+        for (int i = 0; i < N; i++) {
             temp[i] = sc.nextInt();
             result += temp[i];
         }
 
         int max = temp[0];
-        for (int i = 0; i < N; i++){
-            if(temp[i] > max){
+        for (int i = 0; i < N; i++) {
+            if (temp[i] > max) {
                 max = temp[i];
             }
         }
