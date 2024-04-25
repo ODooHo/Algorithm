@@ -11,6 +11,7 @@ import java.util.StringTokenizer;
 public class 그래프_완전탐색 {
     static boolean visited[];
     static ArrayList<Integer>[] A;
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
@@ -18,15 +19,15 @@ public class 그래프_완전탐색 {
         int n = Integer.parseInt(st.nextToken());
         int m = Integer.parseInt(st.nextToken());
         int v = Integer.parseInt(st.nextToken());
-        visited = new boolean[n+1];
+        visited = new boolean[n + 1];
 
-        A = new ArrayList[n+1];
+        A = new ArrayList[n + 1];
 
-        for(int i=1; i<n+1; i++){
+        for (int i = 1; i < n + 1; i++) {
             A[i] = new ArrayList<>();
         }
 
-        for(int i=0; i<m; i++){
+        for (int i = 0; i < m; i++) {
             st = new StringTokenizer(br.readLine());
             int s = Integer.parseInt(st.nextToken());
             int e = Integer.parseInt(st.nextToken());
@@ -48,16 +49,16 @@ public class 그래프_완전탐색 {
 
     }
 
-    private static void DFS(int v){
-        if(visited[v]){
+    private static void DFS(int v) {
+        if (visited[v]) {
             return;
         }
         visited[v] = true;
-        if(v != 0) {
+        if (v != 0) {
             System.out.print(v);
         }
-        for(int i : A[v]){
-            if(!visited[i]){
+        for (int i : A[v]) {
+            if (!visited[i]) {
                 DFS(i);
             }
         }
@@ -67,12 +68,12 @@ public class 그래프_완전탐색 {
         Queue<Integer> queue = new LinkedList<>();
         queue.offer(i);
         visited[i] = true;
-        while(!queue.isEmpty()){
+        while (!queue.isEmpty()) {
             int current = queue.poll();
             System.out.print(current + " ");
 
             for (Integer temp : A[current]) {
-                if(!visited[temp]){
+                if (!visited[temp]) {
                     queue.offer(temp);
                     visited[temp] = true;
                 }

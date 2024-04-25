@@ -12,7 +12,7 @@ public class 부분합 {
 
 
         Scanner sc = new Scanner(System.in);
-        int N,M = 0;
+        int N, M = 0;
 
 
         N = sc.nextInt();
@@ -20,24 +20,24 @@ public class 부분합 {
 
         long[] sum = new long[N];
 
-        for(int i = 0; i < N; i++){
+        for (int i = 0; i < N; i++) {
             int a = sc.nextInt();
-            if (i>=1){
-                sum[i] = sum[i-1] + a;
-            }else{
+            if (i >= 1) {
+                sum[i] = sum[i - 1] + a;
+            } else {
                 sum[i] = a;
             }
         }
 
 
-        for(int i = 0; i < M; i++){
+        for (int i = 0; i < M; i++) {
             int a = sc.nextInt();
             int b = sc.nextInt();
 
-            if (a==1){
-                System.out.println(sum[b-1]);
-            }else{
-                System.out.println(sum[b-1] - sum[a-2]);
+            if (a == 1) {
+                System.out.println(sum[b - 1]);
+            } else {
+                System.out.println(sum[b - 1] - sum[a - 2]);
             }
 
         }
