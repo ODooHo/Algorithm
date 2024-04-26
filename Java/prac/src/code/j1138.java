@@ -11,16 +11,16 @@ public class j1138 {
 
         int n = Integer.parseInt(br.readLine());
 
-        int[] line = new int[n+1];
+        int[] line = new int[n + 1];
 
         StringTokenizer st = new StringTokenizer(br.readLine());
-        for(int i=1;i<=n;i++){
+        for (int i = 1; i <= n; i++) {
             line[i] = Integer.parseInt(st.nextToken());
         }
         List<Integer> result = new ArrayList<>();
 
-        for(int i=n;i>=1;i--){
-            result.add(line[i],i);
+        for (int i = n; i >= 1; i--) {
+            result.add(line[i], i);
         }
 
         for (Integer res : result) {
