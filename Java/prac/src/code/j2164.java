@@ -13,14 +13,14 @@ public class j2164 {
 
         int N = Integer.parseInt(br.readLine());
 
-        Queue<Integer> card  = new LinkedList<>();
+        Queue<Integer> card = new LinkedList<>();
 
-        for(int i = 0; i< N; i++){
-            card.add(i+1);
+        for (int i = 0; i < N; i++) {
+            card.add(i + 1);
         }
 
 
-        while(card.size()!=1){
+        while (card.size() != 1) {
             card.remove();
             int a = card.remove();
             card.add(a);
