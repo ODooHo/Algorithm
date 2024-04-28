@@ -7,6 +7,7 @@ import java.util.StringTokenizer;
 
 public class j20922 {
     static int[] result;
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
@@ -18,7 +19,7 @@ public class j20922 {
 
         st = new StringTokenizer(br.readLine());
 
-        for(int i=0;i<n;i++){
+        for (int i = 0; i < n; i++) {
             num[i] = Integer.parseInt(st.nextToken());
         }
 
@@ -34,7 +35,7 @@ public class j20922 {
             }
             // 더이상 늘릴 수 없음
             int len = end - start;
-            if(max < len){
+            if (max < len) {
                 max = len;
             }
 
