@@ -11,10 +11,7 @@ public class 스트림_중복 {
         String a = "Hello my name is ODooHo Hello";
         char[] temp = a.toCharArray();
         Set<Character> result = new HashSet<>();
-
-
         Set<Character> set = new HashSet<>();
-
 
         for (char c : temp) {
             boolean check = set.add(c);
@@ -27,7 +24,6 @@ public class 스트림_중복 {
             System.out.print(c + " ");
         }
         System.out.println();
-
 
         /**
          * 문자열이 있는 List에서 중복 요소 찾는 방법
