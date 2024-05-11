@@ -23,16 +23,16 @@ public class j6118 {
         n = Integer.parseInt(st.nextToken());
         m = Integer.parseInt(st.nextToken());
 
-        D = new ArrayList[n+1];
-        result = new int[n+1];
-        visited = new boolean[n+1];
+        D = new ArrayList[n + 1];
+        result = new int[n + 1];
+        visited = new boolean[n + 1];
 
-        for(int i=1;i<=n;i++) {
+        for (int i = 1; i <= n; i++) {
             D[i] = new ArrayList<>();
             visited[i] = false;
         }
 
-        for(int i=0;i<m;i++){
+        for (int i = 0; i < m; i++) {
             st = new StringTokenizer(br.readLine());
             int a = Integer.parseInt(st.nextToken());
             int b = Integer.parseInt(st.nextToken());
@@ -45,7 +45,7 @@ public class j6118 {
 
         int max = 0;
         for (int i : result) {
-            if (i > max){
+            if (i > max) {
                 max = i;
             }
         }
@@ -55,13 +55,12 @@ public class j6118 {
 
         boolean flag = false;
 
-        for(int i=1;i<=n;i++){
-            if(!flag && result[i] == max){
+        for (int i = 1; i <= n; i++) {
+            if (!flag && result[i] == max) {
                 first = i;
                 cnt++;
                 flag = true;
-            }
-            else if(result[i] == max){
+            } else if (result[i] == max) {
                 cnt++;
             }
 
@@ -72,17 +71,17 @@ public class j6118 {
     }
 
 
-    private static void BFS(int start){
+    private static void BFS(int start) {
         Queue<Integer> queue = new LinkedList<>();
         visited[start] = true;
         queue.add(start);
 
-        while(!queue.isEmpty()){
+        while (!queue.isEmpty()) {
             int current = queue.poll();
-            for (Integer next  : D[current]) {
-                if(!visited[next]){
+            for (Integer next : D[current]) {
+                if (!visited[next]) {
                     queue.add(next);
-                    result[next] = result[current]+1;
+                    result[next] = result[current] + 1;
                     visited[next] = true;
                 }
             }
