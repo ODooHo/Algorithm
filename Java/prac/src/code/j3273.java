@@ -15,26 +15,24 @@ public class j3273 {
         int[] list = new int[n];
 
         StringTokenizer st = new StringTokenizer(br.readLine());
-        for(int i=0;i<n;i++){
+        for (int i = 0; i < n; i++) {
             list[i] = Integer.parseInt(st.nextToken());
         }
         Arrays.sort(list);
         int x = Integer.parseInt(br.readLine());
 
         int start = 0;
-        int end = n-1;
+        int end = n - 1;
         int cnt = 0;
 
-        while(start<end){
+        while (start < end) {
             int check = list[start] + list[end];
 
-            if(check < x){
+            if (check < x) {
                 start++;
-            }
-            else if(check>x){
+            } else if (check > x) {
                 end--;
-            }
-            else{
+            } else {
                 cnt++;
                 start++;
                 end--;
