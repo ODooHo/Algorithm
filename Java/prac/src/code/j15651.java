@@ -26,7 +26,7 @@ public class j15651 {
 
         st = new StringTokenizer(br.readLine());
 
-        for(int i=0; i<N;i++){
+        for (int i = 0; i < N; i++) {
             num[i] = Integer.parseInt(st.nextToken());
         }
         Arrays.sort(num);
@@ -51,7 +51,7 @@ public class j15651 {
 
 
         for (int i = 0; i < N; i++) {
-            if(!visited[i]){
+            if (!visited[i]) {
                 visited[i] = true;
                 arr[depth] = num[i];
                 dfs(depth + 1);
