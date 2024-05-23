@@ -4,9 +4,10 @@ import java.io.*;
 import java.util.*;
 
 public class j22233 {
-    static Map<String,Boolean> keyword = new HashMap<>();
+    static Map<String, Boolean> keyword = new HashMap<>();
     static int N;
     static int M;
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
@@ -16,12 +17,12 @@ public class j22233 {
         N = Integer.parseInt(st.nextToken());
         M = Integer.parseInt(st.nextToken());
 
-        for(int i=0;i<N;i++){
+        for (int i = 0; i < N; i++) {
             String temp = br.readLine();
-            keyword.put(temp,false);
+            keyword.put(temp, false);
         }
 
-        for(int i=0;i<M;i++){
+        for (int i = 0; i < M; i++) {
             String temp = br.readLine();
 
             String[] check = temp.split(",");
