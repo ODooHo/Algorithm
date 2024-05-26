@@ -14,29 +14,29 @@ public class j31263 {
 
         int cnt = 0;
         int i = temp.length();
-        while(i>0){
+        while (i > 0) {
             int size = 3;
-            String check = temp.substring(Math.max(0,i - size),i);
-            if(Integer.parseInt(check) > 641){
-                check = temp.substring(Math.max(0,i-size+1),i);
-                if(check.startsWith("0")){
-                    i-=1;
-                }else{
-                    i-=2;
+            String check = temp.substring(Math.max(0, i - size), i);
+            if (Integer.parseInt(check) > 641) {
+                check = temp.substring(Math.max(0, i - size + 1), i);
+                if (check.startsWith("0")) {
+                    i -= 1;
+                } else {
+                    i -= 2;
                 }
-            }else{
-                if(check.startsWith("0")){
-                    check = temp.substring(Math.max(0,i-size+1),i);
-                    if(check.startsWith("0")){
-                        i-=1;
-                    }else{
-                        i-=2;
+            } else {
+                if (check.startsWith("0")) {
+                    check = temp.substring(Math.max(0, i - size + 1), i);
+                    if (check.startsWith("0")) {
+                        i -= 1;
+                    } else {
+                        i -= 2;
                     }
-                }else{
-                    i -=3;
+                } else {
+                    i -= 3;
                 }
             }
-            cnt +=1;
+            cnt += 1;
 
         }
 
