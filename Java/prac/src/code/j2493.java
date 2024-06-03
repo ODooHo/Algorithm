@@ -17,26 +17,25 @@ public class j2493 {
         StringBuilder sb = new StringBuilder();
         List<Top> laser = new ArrayList<>();
         Stack<Top> result = new Stack<>();
-        for(int i=0; i<N;i++) {
+        for (int i = 0; i < N; i++) {
             int current = Integer.parseInt(st.nextToken());
 
-            if(result.isEmpty()){
+            if (result.isEmpty()) {
                 sb.append("0 ");
-                result.push(new Top(i+1,current));
-            }
-            else{
-                while(true){
-                    if(result.isEmpty()){
+                result.push(new Top(i + 1, current));
+            } else {
+                while (true) {
+                    if (result.isEmpty()) {
                         sb.append("0 ");
-                        result.push(new Top(i+1,current));
+                        result.push(new Top(i + 1, current));
                         break;
                     }
                     Top prev = result.peek();
-                    if(prev.height>current){
+                    if (prev.height > current) {
                         sb.append(prev.sequence + " ");
-                        result.push(new Top(i+1,current));
+                        result.push(new Top(i + 1, current));
                         break;
-                    }else{
+                    } else {
                         result.pop();
                     }
                 }
@@ -48,7 +47,7 @@ public class j2493 {
 
     }
 
-    static class Top{
+    static class Top {
         int sequence;
         long height;
 
