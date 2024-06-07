@@ -13,17 +13,17 @@ public class j11286 {
 
         PriorityQueue<Num> priorityQueue = new PriorityQueue<>();
 
-        for(int i=0; i<n; i++){
+        for (int i = 0; i < n; i++) {
             int temp = Integer.parseInt(br.readLine());
-            Num num = new Num(Math.abs(temp),temp);
-            if (temp == 0){
-                if(priorityQueue.isEmpty()){
+            Num num = new Num(Math.abs(temp), temp);
+            if (temp == 0) {
+                if (priorityQueue.isEmpty()) {
                     System.out.println(0);
-                }else{
+                } else {
                     Num check = priorityQueue.remove();
                     System.out.println(check.num);
                 }
-            }else{
+            } else {
                 priorityQueue.add(num);
             }
 
@@ -32,18 +32,18 @@ public class j11286 {
 
     }
 
-    static class Num implements Comparable<Num>{
+    static class Num implements Comparable<Num> {
         private int abs;
         private Integer num;
 
-        public Num(int a, int b){
+        public Num(int a, int b) {
             this.abs = a;
             this.num = b;
         }
 
         @Override
         public int compareTo(Num o) {
-            if (this.abs == o.abs){
+            if (this.abs == o.abs) {
                 return this.num.compareTo(o.num);
             }
             return this.abs - o.abs;
