@@ -1,54 +1,47 @@
 package code;
 
 import java.io.*;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class test {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
+
+        int N = Integer.parseInt(br.readLine());
+        int M = Integer.parseInt(br.readLine());
+
+        int [] source = new int[N];
 
         StringTokenizer st = new StringTokenizer(br.readLine());
-
-        int N = Integer.parseInt(st.nextToken());
-        int M = Integer.parseInt(st.nextToken());
-
-        st = new StringTokenizer(br.readLine());
-
-        int[] A = new int[N];
-        int[] S = new int[N];
-
         for(int i=0; i<N; i++){
-            A[i] = Integer.parseInt(st.nextToken());
+            source[i] = Integer.parseInt(st.nextToken());
         }
 
-        S[0] = A[0];
 
-        for(int i=1; i<N; i++){
-            S[i] = S[i-1] + A[i];
-        }
+        Arrays.sort(source);
+        int max = source[N-1];
 
-        for(int i=0;i<M;i++){
-            st = new StringTokenizer(br.readLine());
-            int f = Integer.parseInt(st.nextToken());
-            int s = Integer.parseInt(st.nextToken());
 
-            if(f == s){
-                bw.append(A[f-1] + "\n");
-            }
-            else if (f == 1){
-                bw.append(S[s-1] + "\n");
-            }
-            else{
-                int temp =  S[s-1] - S[f-2];
+        int start = 0;
+        int end = N-1;
+        int cnt = 0;
 
-                bw.append(temp + "\n");
+        while(start < end){
+            int temp = source[start] + source[end];
+            if(temp == M){
+                cnt++;
+                start++;
+                end--;
+            }else if(temp < M){
+                start++;
+            }else{
+                end--;
             }
         }
 
-        bw.flush();
-        bw.close();
+        System.out.println(cnt);
 
 
     }

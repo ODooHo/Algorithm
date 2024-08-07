@@ -9,21 +9,19 @@ public class j2018 {
 
         int N = sc.nextInt();
 
-        int cnt = 1,start = 1,end = 1, sum = 1;
+        int cnt = 1, start = 1, end = 1, sum = 1;
 
-        while(end!=N){
-            if(sum == N){
+        while (end != N) {
+            if (sum == N) {
                 cnt++;
                 end++;
-                sum = sum+end;
-            }
-            else if(sum > N){
+                sum = sum + end;
+            } else if (sum > N) {
                 sum = sum - start;
                 start++;
-            }
-            else if (sum<N){
+            } else if (sum < N) {
                 end++;
-                sum = sum+end;
+                sum = sum + end;
             }
         }
 
