@@ -1,49 +1,58 @@
 package code;
 
 import java.io.*;
-import java.util.Arrays;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class test {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
         int N = Integer.parseInt(br.readLine());
-        int M = Integer.parseInt(br.readLine());
 
-        int [] source = new int[N];
+        PriorityQueue<Num> heap = new PriorityQueue<>();
 
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        for(int i=0; i<N; i++){
-            source[i] = Integer.parseInt(st.nextToken());
-        }
+        for(int i=0; i<N;i++) {
+            int temp = Integer.parseInt(br.readLine());
 
-
-        Arrays.sort(source);
-        int max = source[N-1];
-
-
-        int start = 0;
-        int end = N-1;
-        int cnt = 0;
-
-        while(start < end){
-            int temp = source[start] + source[end];
-            if(temp == M){
-                cnt++;
-                start++;
-                end--;
-            }else if(temp < M){
-                start++;
+            if(temp != 0){
+                int av = Math.abs(temp);
+                Num value = new Num(av,temp);
+                heap.add(value);
             }else{
-                end--;
+                Num poll = heap.poll();
+                if(poll==null){
+                    bw.append(0 + "\n");
+                }else{
+                    bw.append(poll.rv + "\n");
+                }
             }
         }
 
-        System.out.println(cnt);
+
+        bw.flush();
+        bw.close();
+
+    }
+
+    static class Num implements Comparable<Num>{
+            Integer av;
+            Integer rv;
 
 
+            public Num(Integer av, Integer rv){
+                this.av = av;
+                this.rv = rv;
+            }
+
+
+        @Override
+        public int compareTo(Num o) {
+            if(this.av == o.av){
+                return this.rv.compareTo(o.rv);
+            }
+            return this.av - o.av;
+        }
     }
 
 }
