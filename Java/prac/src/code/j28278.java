@@ -13,6 +13,7 @@ public class j28278 {
         Stack<Integer> stack = new Stack<>();
         int N = Integer.parseInt(br.readLine());
 
+
         for (int i = 0; i < N; i++) {
             st = new StringTokenizer(br.readLine());
             int cmd = Integer.parseInt(st.nextToken());
