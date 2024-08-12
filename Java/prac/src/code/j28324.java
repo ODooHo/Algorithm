@@ -13,21 +13,20 @@ public class j28324 {
 
         StringTokenizer st = new StringTokenizer(br.readLine());
 
-        for(int i=0;i<N;i++){
+        for (int i = 0; i < N; i++) {
             speed[i] = Long.parseLong(st.nextToken());
         }
 
         long result = 1;
         int temp = 1;
-        for(int i=N-2; i>=0;i--){
+        for (int i = N - 2; i >= 0; i--) {
             long current = speed[i];
-            if(temp < current){
+            if (temp < current) {
                 temp++;
-            }
-            else if(temp>current){
+            } else if (temp > current) {
                 temp = (int) current;
             }
-            result +=temp;
+            result += temp;
         }
 
         System.out.println(result);
