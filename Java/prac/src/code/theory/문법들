@@ -23,3 +23,21 @@
         String check = temp.substring(i,Math.min(temp.length(),i+size);
         역방향
         String check = temp.substring(Math.max(0,i - size),i);
+
+
+
+정수 중 음수는 나머지 연산 시 이를 잘 고려해야함. -> -400 % 7 == 2 가 아닌 1이 될 것.(짐작)
+
+DAU = Daily Active User로
+SELECT COUNT(DISTINCT user_id) AS daily_active_users
+FROM user
+WHERE DATE(created_at) = '2024-08-13';
+
+이런식으로 추출한다고 한다.
+
+type enum의 경우
+SELECT COUNT(DISTINCT user_id) AS home_dau
+FROM user
+WHERE DATE(created_at) = '2024-08-13' AND type = 'HOME';
+
+이런식으로 활용된다고 한다.
