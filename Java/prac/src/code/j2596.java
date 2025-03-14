@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.*;
 
 public class j2596 {
-    static Map<Character, char[]> letter = new HashMap<>();
+    static Map<String, Character> letter = new HashMap<>();
 
     public static void main(String[] args) throws IOException {
         StringBuilder sb = new StringBuilder();
@@ -14,37 +14,65 @@ public class j2596 {
         int N = Integer.parseInt(br.readLine());
 
         String str = br.readLine();
+
+        List<String> split = new ArrayList<>();
+
+        for (int i = 0; i < str.length(); i += 6) {
+            split.add(str.substring(i, i + 6));
+        }
+
         String[] num = new String[]{"000000", "001111", "010011", "011100", "100110", "101001", "110101", "111010"};
 
-        // N개의 문자 검사
-        for (int i = 0; i < N; i++) {
-            int check = 0;  // 일치하는 문자가 없을 경우 체크
+        letter.put(num[0], 'A');
+        letter.put(num[1], 'B');
+        letter.put(num[2], 'C');
+        letter.put(num[3], 'D');
+        letter.put(num[4], 'E');
+        letter.put(num[5], 'F');
+        letter.put(num[6], 'G');
+        letter.put(num[7], 'H');
 
-            // 8개 문자와 비교하기
-            for (int j = 0; j < 8; j++) {
-                int count = 0;  // 각 자리가 일치하지 않는 경우 카운트
-
-                // 각 자리마다 비교하기
-                for (int k = 0; k < 6; k++) {
-                    if (str.charAt(k) != num[j].charAt(k)) {
-                        count++;
-                        if (count > 1) break;
-                    }
-                }
-
-                // 일치하지 않는 자리가 1개 이거나 전부 일치할 때?
-                if (count == 0 || count == 1) {
-                    sb.append((char) (j + 'A')); // 결과 문자열에 저장
-                    check = 1;       // 일치하는 문자 찾음 표시
+        for (int t = 0; t < N; t++) {
+            String inputString = split.get(t);
+            boolean flag = false;
+            for (String code : num) {
+                if (inputString.equals(code)) {
+                    sb.append(letter.get(code));
+                    flag = true;
                     break;
                 }
             }
-            // 일치하는 문자가 없을 경우?
-            if (check == 0) {
-                System.out.println(i + 1); // 현재 위치 출력
-                return;
-            } else str = str.substring(6); // str[6]~끝까지 자르기 (검사 끝난 앞 6문자는 제외)
+            if (!flag) {
+                int[] count = new int[8];
+                int idx = 0;
+                for (String code : num) {
+                    int cnt = 0;
+                    for (int i = 0; i < code.length(); i++) {
+                        if (inputString.charAt(i) != code.charAt(i)) {
+                            cnt++;
+                        }
+                    }
+                    count[idx++] = cnt;
+                }
+                int min = count[0];
+                int tmp = 0;
+                for (int i = 0; i < count.length; i++) {
+                    if (count[i] < min) {
+                        tmp = i;
+                        min = count[i];
+                    }
+                }
+                if (min >= 2) {
+                    System.out.println(t + 1);
+                    return;
+                } else {
+                    sb.append(letter.get(num[tmp]));
+                }
+
+            }
         }
         System.out.println(sb);
     }
+
+
 }
